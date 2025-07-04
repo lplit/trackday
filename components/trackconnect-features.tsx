@@ -115,7 +115,7 @@ export function TrackConnectFeatures() {
                 </div>
               </div>
               <blockquote className="text-sm italic text-muted-foreground leading-relaxed">
-                "{testimonial.quote}"
+                &ldquo;{testimonial.quote}&rdquo;
               </blockquote>
             </div>
           ))}

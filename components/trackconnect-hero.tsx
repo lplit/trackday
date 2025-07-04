@@ -80,7 +80,7 @@ export function TrackConnectHero() {
               {/* Value proposition copy as specified */}
               <div className="space-y-4 text-lg lg:text-xl leading-relaxed text-muted-foreground max-w-2xl">
                 <p className="text-foreground/80">
-                  Join Europe's most exclusive trackday community. Share boxes, discover premium events, 
+                  Join Europe&apos;s most exclusive trackday community. Share boxes, discover premium events, 
                   and connect with fellow enthusiasts who appreciate the art of precision driving. 
                   From Le Mans to Spa-Francorchamps, your next trackday adventure starts here.
                 </p>
@@ -155,7 +155,7 @@ export function TrackConnectHero() {
                     </div>
                     <h3 className="text-xl font-semibold mb-2">Welcome to the Elite!</h3>
                     <p className="text-sm text-muted-foreground">
-                      You'll be the first to know when we launch in Spring 2025.
+                      You&apos;ll be the first to know when we launch in Spring 2025.
                     </p>
                   </div>
                 )}
@@ -164,7 +164,7 @@ export function TrackConnectHero() {
               {/* Social proof elements */}
               <div className="space-y-4">
                 <blockquote className="border-l-4 border-primary/20 pl-4 italic text-muted-foreground">
-                  "Finally, a platform built for serious trackday enthusiasts. Can't wait for the full launch."
+                  &ldquo;Finally, a platform built for serious trackday enthusiasts. Can&apos;t wait for the full launch.&rdquo;
                   <footer className="text-sm mt-1 font-medium text-foreground">
                     — Alexandre M., Le Mans Regular
                   </footer>
