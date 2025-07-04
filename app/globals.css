@@ -4,52 +4,56 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
+    /* Light Theme - Premium TrackConnect Colors */
+    --background: 0 0% 100%; /* Pure white */
+    --foreground: 0 0% 10%; /* Near black #1A1A1A */
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
+    --card-foreground: 0 0% 10%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
+    --popover-foreground: 0 0% 10%;
+    --primary: 0 73% 41%; /* Racing red #DC2626 */
     --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
+    --secondary: 215 28% 17%; /* Dark gray #1F2937 */
+    --secondary-foreground: 0 0% 98%;
+    --muted: 210 40% 98%; /* Off-white #F9FAFB */
+    --muted-foreground: 215 14% 42%; /* Professional gray #6B7280 */
+    --accent: 142 76% 36%; /* Success green #10B981 */
+    --accent-foreground: 0 0% 98%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
+    --border: 220 13% 91%; /* Light gray #E5E7EB */
+    --input: 220 13% 91%;
+    --ring: 0 73% 41%;
+    --warning: 45 93% 47%; /* Amber #F59E0B */
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    --radius: 0.5rem;
+    --radius: 0.75rem; /* 12px for premium feel */
   }
   .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
+    /* Dark Theme - Premium TrackConnect Colors */
+    --background: 0 0% 6%; /* Deep black #0F0F0F */
+    --foreground: 0 0% 100%; /* Pure white */
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 6%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 0 91% 71%; /* Bright red #EF4444 */
     --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
+    --secondary: 0 0% 12%; /* Dark gray #1F1F1F */
+    --secondary-foreground: 0 0% 95%; /* Light gray #F3F4F6 */
+    --muted: 0 0% 12%;
+    --muted-foreground: 240 5% 65%; /* Light gray #A1A1AA */
+    --accent: 160 84% 39%; /* Bright green #34D399 */
+    --accent-foreground: 0 0% 9%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
+    --border: 215 28% 25%; /* Medium gray #374151 */
+    --input: 215 28% 25%;
+    --ring: 0 91% 71%;
+    --warning: 48 96% 53%; /* Bright amber #FBBF24 */
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
@@ -64,5 +68,103 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Custom TrackConnect Styles */
+@layer components {
+  .racing-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary)) 50%, hsl(var(--secondary)) 100%);
+  }
+  
+  .racing-text-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .premium-shadow {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  }
+  
+  .dark .premium-shadow {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+  
+  .hero-parallax {
+    will-change: transform;
+    transform: translateZ(0);
+  }
+  
+  .floating-stats {
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .dark .floating-stats {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .track-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e5e7eb' fill-opacity='0.05'%3E%3Cpath d='M54 54h6v6h-6zM48 48h6v6h-6zM42 42h6v6h-6zM36 36h6v6h-6zM30 30h6v6h-6zM24 24h6v6h-6zM18 18h6v6h-6zM12 12h6v6h-6zM6 6h6v6H6zM0 0h6v6H0z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  
+  .dark .track-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23374151' fill-opacity='0.1'%3E%3Cpath d='M54 54h6v6h-6zM48 48h6v6h-6zM42 42h6v6h-6zM36 36h6v6h-6zM30 30h6v6h-6zM24 24h6v6h-6zM18 18h6v6h-6zM12 12h6v6h-6zM6 6h6v6H6zM0 0h6v6H0z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* Premium form styling */
+  .premium-form-field {
+    transition: all 0.3s ease;
+  }
+  
+  .premium-form-field:focus {
+    box-shadow: 0 0 0 3px hsl(var(--primary) / 0.1);
+  }
+
+  /* Smooth theme transitions */
+  * {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Typography enhancements */
+  .font-serif {
+    font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+    font-feature-settings: "liga" 1, "kern" 1;
+  }
+
+  /* Racing-inspired typography */
+  .racing-title {
+    font-feature-settings: "ss01" 1, "ss02" 1, "liga" 1;
+    letter-spacing: -0.02em;
+  }
+
+  /* Micro-interactions */
+  .hover-scale {
+    transition: transform 0.2s ease;
+  }
+  
+  .hover-scale:hover {
+    transform: scale(1.02);
+  }
+
+  /* Performance optimizations */
+  .will-change-transform {
+    will-change: transform;
+  }
+
+  /* Premium glassmorphism effect */
+  .glass-morphism {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .dark .glass-morphism {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
 }
