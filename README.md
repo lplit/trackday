@@ -1,105 +1,237 @@
-<a href="https://demo-nextjs-with-supabase.vercel.app/">
-  <img alt="Next.js and Supabase Starter Kit - the fastest way to build apps with Next.js and Supabase" src="https://demo-nextjs-with-supabase.vercel.app/opengraph-image.png">
-  <h1 align="center">Next.js and Supabase Starter Kit</h1>
-</a>
+<div align="center">
+  <h1>🏁 TrackConnect</h1>
+  <h2>The Private Club for European Trackday Enthusiasts</h2>
+</div>
 
 <p align="center">
- The fastest way to build apps with Next.js and Supabase
+  <em>Join Europe's most exclusive trackday community. Share boxes, discover premium events, and connect with fellow enthusiasts who appreciate the art of precision driving.</em>
 </p>
 
 <p align="center">
   <a href="#features"><strong>Features</strong></a> ·
-  <a href="#demo"><strong>Demo</strong></a> ·
-  <a href="#deploy-to-vercel"><strong>Deploy to Vercel</strong></a> ·
-  <a href="#clone-and-run-locally"><strong>Clone and run locally</strong></a> ·
-  <a href="#feedback-and-issues"><strong>Feedback and issues</strong></a>
-  <a href="#more-supabase-examples"><strong>More Examples</strong></a>
+  <a href="#design-philosophy"><strong>Design Philosophy</strong></a> ·
+  <a href="#tech-stack"><strong>Tech Stack</strong></a> ·
+  <a href="#development"><strong>Development</strong></a> ·
+  <a href="#deployment"><strong>Deployment</strong></a>
 </p>
+
+<div align="center">
+  <strong>🚀 Launching Spring 2025</strong>
+</div>
+
 <br/>
+
+## Overview
+
+TrackConnect is a premium landing page for an exclusive European trackday community platform. Built for affluent motorsports enthusiasts who value precision, performance, and community, TrackConnect positions itself as the "private members' club" for trackday coordination.
+
+From Le Mans to Spa-Francorchamps, TrackConnect will be the platform where serious riders connect, coordinate, and conquer Europe's most prestigious racing circuits.
 
 ## Features
 
-- Works across the entire [Next.js](https://nextjs.org) stack
-  - App Router
-  - Pages Router
-  - Middleware
-  - Client
-  - Server
-  - It just works!
-- supabase-ssr. A package to configure Supabase Auth to use cookies
-- Password-based authentication block installed via the [Supabase UI Library](https://supabase.com/ui/docs/nextjs/password-based-auth)
-- Styling with [Tailwind CSS](https://tailwindcss.com)
-- Components with [shadcn/ui](https://ui.shadcn.com/)
-- Optional deployment with [Supabase Vercel Integration and Vercel deploy](#deploy-your-own)
-  - Environment variables automatically assigned to Vercel project
+### 🎯 **Premium Landing Page**
+- **Split-screen hero design** (60/40 layout) with premium aesthetics
+- **Newsletter signup** with progressive enhancement (optional first name)
+- **Social proof elements** with testimonials and statistics
+- **Floating statistics overlay** showing community engagement
+- **Premium form design** with glassmorphism effects
 
-## Demo
+### 🎨 **Design Excellence** 
+- **Motorsports-inspired typography** with racing gradients
+- **Dual theme support** (light/dark) with smooth transitions
+- **Racing stripe accents** and subtle geometric patterns
+- **Premium color schemes** targeting luxury market segment
+- **Responsive design** optimized for desktop, tablet, and mobile
 
-You can view a fully working demo at [demo-nextjs-with-supabase.vercel.app](https://demo-nextjs-with-supabase.vercel.app/).
+### 🌍 **European Focus**
+- **Multi-language support** (EN/FR/PL) with language selector
+- **European track references** (Le Mans, Spa-Francorchamps, Nürburgring)
+- **Premium positioning** for affluent €150-750/trackday market
+- **Cultural authenticity** built by trackday veterans
 
-## Deploy to Vercel
+### ⚡ **Technical Features**
+- **Next.js 15** with App Router and Turbopack
+- **TypeScript** for type safety
+- **Tailwind CSS** with custom racing-inspired utilities
+- **Framer Motion ready** for advanced animations
+- **Performance optimized** with <2s loading on 3G
+- **SEO optimized** with proper metadata and schema
 
-Vercel deployment will guide you through creating a Supabase account and project.
+## Design Philosophy
 
-After installation of the Supabase integration, all relevant environment variables will be assigned to the project so the deployment is fully functioning.
+TrackConnect balances **motorsports authenticity** with **luxury brand aesthetics**, similar to how premium automotive brands like Aston Martin and Rolex position themselves. The design philosophy centers on:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fwith-supabase&project-name=nextjs-with-supabase&repository-name=nextjs-with-supabase&demo-title=nextjs-with-supabase&demo-description=This+starter+configures+Supabase+Auth+to+use+cookies%2C+making+the+user%27s+session+available+throughout+the+entire+Next.js+app+-+Client+Components%2C+Server+Components%2C+Route+Handlers%2C+Server+Actions+and+Middleware.&demo-url=https%3A%2F%2Fdemo-nextjs-with-supabase.vercel.app%2F&external-id=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fwith-supabase&demo-image=https%3A%2F%2Fdemo-nextjs-with-supabase.vercel.app%2Fopengraph-image.png)
+- **Exclusivity**: "Private club" positioning for wealthy enthusiasts
+- **Precision**: Clean, minimal design with attention to detail
+- **Performance**: Fast loading and smooth interactions
+- **Community**: Emphasis on connecting like-minded individuals
+- **European Heritage**: Respect for racing culture and tradition
 
-The above will also clone the Starter kit to your GitHub, you can clone that locally and develop locally.
+## Tech Stack
 
-If you wish to just develop locally and not deploy to Vercel, [follow the steps below](#clone-and-run-locally).
+### **Core Framework**
+- **Next.js 15** - React framework with App Router
+- **TypeScript** - Type-safe development
+- **React 19** - Latest React features
 
-## Clone and run locally
+### **Styling & UI**
+- **Tailwind CSS** - Utility-first CSS framework
+- **shadcn/ui** - Premium component library
+- **Radix UI** - Accessible component primitives
+- **Lucide React** - Beautiful icon library
+- **next-themes** - Theme switching system
 
-1. You'll first need a Supabase project which can be made [via the Supabase dashboard](https://database.new)
+### **Backend Ready**
+- **Supabase** - Database and authentication ready
+- **Server Actions** - Form handling and API endpoints
+- **Middleware** - Request/response processing
 
-2. Create a Next.js app using the Supabase Starter template npx command
+### **Development Tools**
+- **ESLint** - Code linting with Next.js config
+- **PostCSS** - CSS processing with Autoprefixer
+- **Turbopack** - Fast development builds
 
+## Development
+
+### **Prerequisites**
+- Node.js 18+ 
+- npm/yarn/pnpm
+- Git
+
+### **Quick Start**
+
+1. **Clone the repository**
    ```bash
-   npx create-next-app --example with-supabase with-supabase-app
+   git clone <repository-url>
+   cd trackday
    ```
 
+2. **Install dependencies**
    ```bash
-   yarn create next-app --example with-supabase with-supabase-app
+   npm install
+   # or
+   yarn install
+   # or
+   pnpm install
    ```
 
-   ```bash
-   pnpm create next-app --example with-supabase with-supabase-app
-   ```
-
-3. Use `cd` to change into the app's directory
-
-   ```bash
-   cd with-supabase-app
-   ```
-
-4. Rename `.env.example` to `.env.local` and update the following:
-
-   ```
-   NEXT_PUBLIC_SUPABASE_URL=[INSERT SUPABASE PROJECT URL]
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=[INSERT SUPABASE PROJECT API ANON KEY]
-   ```
-
-   Both `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` can be found in [your Supabase project's API settings](https://supabase.com/dashboard/project/_?showConnect=true)
-
-5. You can now run the Next.js local development server:
-
+3. **Start development server**
    ```bash
    npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
    ```
 
-   The starter kit should now be running on [localhost:3000](http://localhost:3000/).
+4. **Open in browser**
+   ```
+   http://localhost:3000
+   ```
 
-6. This template comes with the default shadcn/ui style initialized. If you instead want other ui.shadcn styles, delete `components.json` and [re-install shadcn/ui](https://ui.shadcn.com/docs/installation/next)
+### **Available Scripts**
 
-> Check out [the docs for Local Development](https://supabase.com/docs/guides/getting-started/local-development) to also run Supabase locally.
+```bash
+npm run dev          # Start development server with Turbopack
+npm run build        # Build for production
+npm run start        # Start production server
+npm run lint         # Run ESLint
+```
 
-## Feedback and issues
+### **Project Structure**
 
-Please file feedback and issues over on the [Supabase GitHub org](https://github.com/supabase/supabase/issues/new/choose).
+```
+trackday/
+├── app/                    # Next.js App Router
+│   ├── globals.css        # Global styles with custom utilities
+│   ├── layout.tsx         # Root layout with fonts and themes
+│   └── page.tsx           # Landing page composition
+├── components/            # React components
+│   ├── trackconnect-hero.tsx     # Premium hero section
+│   ├── trackconnect-nav.tsx      # Navigation with theme toggle
+│   ├── trackconnect-features.tsx # Features and testimonials
+│   ├── trackconnect-footer.tsx   # Footer with trust signals
+│   └── ui/                       # shadcn/ui components
+├── docs/                  # Documentation
+│   └── LANDING_PAGE.md   # Complete design specification
+├── lib/                   # Utilities
+│   └── utils.ts          # Tailwind utilities
+└── public/               # Static assets
+```
 
-## More Supabase examples
+## Deployment
 
-- [Next.js Subscription Payments Starter](https://github.com/vercel/nextjs-subscription-payments)
-- [Cookie-based Auth and the Next.js 13 App Router (free course)](https://youtube.com/playlist?list=PL5S4mPUpp4OtMhpnp93EFSo42iQ40XjbF)
-- [Supabase Auth and the Next.js App Router](https://github.com/supabase/supabase/tree/master/examples/auth/nextjs)
+### **Environment Setup**
+The project includes Supabase integration for future backend functionality:
+
+1. **Create `.env.local`**
+   ```bash
+   NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+   ```
+
+### **Performance Targets**
+- **Loading Speed**: <2 seconds on 3G connection
+- **Lighthouse Score**: 90+ on all metrics
+- **Core Web Vitals**: Green across all metrics
+- **Mobile Optimization**: Perfect responsive design
+
+## Brand Guidelines
+
+### **Typography**
+- **Headlines**: Playfair Display (serif) for premium feel
+- **Body Text**: Inter (sans-serif) for readability
+- **Racing Gradients**: Custom CSS utilities for brand colors
+
+### **Colors**
+- **Primary**: Racing Red (#DC2626 light, #EF4444 dark)
+- **Secondary**: Dark Gray (#1F2937 light, #F3F4F6 dark)
+- **Accents**: Success Green, Warning Amber
+- **Premium Backgrounds**: Subtle gradients and glassmorphism
+
+### **Voice & Tone**
+- **Exclusive**: "Private club" positioning
+- **Professional**: Premium service quality
+- **Authentic**: Built by trackday veterans
+- **European**: Cultural respect and local knowledge
+
+## Future Roadmap
+
+### **Phase 1**: Landing Page (Current)
+- ✅ Premium design implementation
+- ✅ Newsletter signup and lead capture
+- ✅ Brand positioning and messaging
+
+### **Phase 2**: Platform Development (Spring 2025)
+- 🔄 User authentication and profiles
+- 🔄 Event discovery and coordination
+- 🔄 Box sharing functionality
+- 🔄 Track partnership integration
+
+### **Phase 3**: Community Features
+- 📋 Member directory and networking
+- 📋 Event reviews and ratings
+- 📋 Premium member benefits
+- 📋 Mobile app development
+
+## Contributing
+
+This project represents a premium brand implementation. Contributions should maintain the high-quality design standards and performance targets established in the design specification.
+
+### **Standards**
+- Follow TypeScript best practices
+- Maintain 90+ Lighthouse scores
+- Preserve premium design aesthetic
+- Ensure responsive compatibility
+- Write meaningful commit messages
+
+## License
+
+TrackConnect © 2025. All rights reserved.
+
+---
+
+<div align="center">
+  <p><strong>Built by riders, for riders who appreciate precision.</strong></p>
+  <p><em>40+ trackdays between founders • European focus • Premium quality</em></p>
+</div>
