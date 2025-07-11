@@ -1,27 +1,41 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useTheme } from 'next-themes';
 import { Sun, Moon, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { startTransition } from 'react';
+import { useMounted } from '@/lib/hooks/use-mounted';
 
 /**
  * Navigation component for landing page
  * Client Component for theme toggle and mobile menu interactions
+ * Uses React 19 startTransition for better UX
  */
 export default function LandingNav() {
-  const [mounted, setMounted] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const mounted = useMounted();
   const { theme, setTheme } = useTheme();
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const handleThemeToggle = () => {
+    startTransition(() => {
+      setTheme(theme === 'dark' ? 'light' : 'dark');
+    });
+  };
 
-  if (!mounted) {
-    return null;
-  }
+  // Render a neutral icon until hydration is complete
+  const renderThemeIcon = () => {
+    if (!mounted) {
+      return <Sun className="h-4 w-4 transition-transform duration-300" />;
+    }
+    
+    return theme === 'dark' ? (
+      <Sun className="h-4 w-4 transition-transform duration-300 rotate-0 scale-100" />
+    ) : (
+      <Moon className="h-4 w-4 transition-transform duration-300 rotate-0 scale-100" />
+    );
+  };
 
   return (
     <>
@@ -65,14 +79,11 @@ export default function LandingNav() {
         <Button
           variant="ghost"
           size="sm"
-          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+          onClick={handleThemeToggle}
           className="w-8 h-8 p-0"
+          suppressHydrationWarning
         >
-          {theme === 'dark' ? (
-            <Sun className="h-4 w-4 transition-transform duration-300 rotate-0 scale-100" />
-          ) : (
-            <Moon className="h-4 w-4 transition-transform duration-300 rotate-0 scale-100" />
-          )}
+          {renderThemeIcon()}
           <span className="sr-only">Toggle theme</span>
         </Button>
       </nav>
@@ -82,14 +93,11 @@ export default function LandingNav() {
         <Button
           variant="ghost"
           size="sm"
-          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+          onClick={handleThemeToggle}
           className="w-8 h-8 p-0"
+          suppressHydrationWarning
         >
-          {theme === 'dark' ? (
-            <Sun className="h-4 w-4" />
-          ) : (
-            <Moon className="h-4 w-4" />
-          )}
+          {renderThemeIcon()}
         </Button>
         
         <Button

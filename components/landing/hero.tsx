@@ -1,40 +1,18 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useActionState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
-import { ChevronRight, Mail, Star, Trophy, Zap } from 'lucide-react';
+import { ChevronRight, Mail, Star, Trophy, Zap, Loader2 } from 'lucide-react';
+import { subscribeToNewsletter } from '@/lib/actions/newsletter';
 
 /**
  * Hero section for landing page
- * Following modern React patterns with proper state management
+ * Uses React 19 useActionState with Next.js 15 Server Actions
  */
 export default function LandingHero() {
-  const [email, setEmail] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate API call - in real implementation, connect to your newsletter service
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setIsSubmitted(true);
-    setIsSubmitting(false);
-  };
-
-  if (!mounted) {
-    return null;
-  }
+  const [state, formAction, isPending] = useActionState(subscribeToNewsletter, null);
 
   return (
     <div className="min-h-screen relative overflow-hidden">
@@ -95,42 +73,49 @@ export default function LandingHero() {
 
               {/* Premium Newsletter Signup Form */}
               <div className="bg-card/50 backdrop-blur-sm border border-border/20 rounded-xl p-8 lg:p-10 premium-shadow max-w-md">
-                {!isSubmitted ? (
+                {!state?.success ? (
                   <>
                     <h3 className="text-xl font-semibold mb-2">Join the Elite</h3>
                     <p className="text-sm text-muted-foreground mb-6">
                       Limited beta access for founding members
                     </p>
                     
-                    <form onSubmit={handleSubmit} className="space-y-4">
+                    <form action={formAction} className="space-y-4">
                       <div>
                         <Input
                           type="text"
+                          name="firstName"
                           placeholder="First name"
-                          value={firstName}
-                          onChange={(e) => setFirstName(e.target.value)}
                           required
                           className="bg-background/50 border-border/30"
+                          disabled={isPending}
                         />
                       </div>
                       <div>
                         <Input
                           type="email"
+                          name="email"
                           placeholder="Your email address"
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
                           required
                           className="bg-background/50 border-border/30"
+                          disabled={isPending}
                         />
                       </div>
+                      
+                      {state?.error && (
+                        <div className="text-sm text-red-600 bg-red-50 dark:bg-red-900/10 dark:text-red-400 border border-red-200 dark:border-red-900/50 rounded-md p-3">
+                          {state.error}
+                        </div>
+                      )}
+                      
                       <Button 
                         type="submit" 
-                        disabled={isSubmitting}
+                        disabled={isPending}
                         className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium"
                       >
-                        {isSubmitting ? (
+                        {isPending ? (
                           <>
-                            <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
+                            <Loader2 className="w-4 h-4 mr-2 animate-spin" />
                             Securing Access...
                           </>
                         ) : (
@@ -154,7 +139,7 @@ export default function LandingHero() {
                     </div>
                     <h3 className="text-xl font-semibold mb-2">Welcome to the Elite!</h3>
                     <p className="text-muted-foreground text-sm">
-                      Your beta access is confirmed. We&apos;ll email you exclusive updates about our Spring 2025 launch.
+                      {state.message}
                     </p>
                     <div className="mt-4 text-xs text-muted-foreground">
                       Beta member #{Math.floor(Math.random() * 500) + 500}

@@ -1,5 +1,3 @@
-'use client';
-
 import { Track } from '@/lib/tracks/types';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -11,8 +9,9 @@ interface TrackCardProps {
 }
 
 /**
- * TrackCard component following React best practices
- * Client Component for interactive elements like hover states
+ * TrackCard component following React 19 best practices
+ * Server Component - No client-side state needed for static display
+ * React 19 automatically optimizes this component
  */
 export default function TrackCard({ track }: TrackCardProps) {
   const getDifficultyColor = (difficulty: Track['difficulty']) => {

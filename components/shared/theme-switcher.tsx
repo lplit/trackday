@@ -10,25 +10,34 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Laptop, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { startTransition } from "react";
+import { useMounted } from '@/lib/hooks/use-mounted';
 
 const ICON_SIZE = 16;
 
 /**
  * Theme switcher component - Client Component
- * Provides light/dark/system theme selection
+ * Uses React 19 startTransition for better UX
+ * Prevents hydration mismatch with mounted state
  */
 export default function ThemeSwitcher() {
-  const [mounted, setMounted] = useState(false);
+  const mounted = useMounted();
   const { theme, setTheme } = useTheme();
 
-  // useEffect only runs on the client, so now we can safely show the UI
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const handleThemeChange = (newTheme: string) => {
+    startTransition(() => {
+      setTheme(newTheme);
+    });
+  };
 
+  // Prevent hydration mismatch
   if (!mounted) {
-    return null;
+    return (
+      <Button variant="ghost" size="sm" className="w-9 px-0" disabled>
+        <Sun className="h-[1.2rem] w-[1.2rem]" />
+        <span className="sr-only">Toggle theme</span>
+      </Button>
+    );
   }
 
   return (
@@ -41,7 +50,7 @@ export default function ThemeSwitcher() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuRadioGroup value={theme} onValueChange={setTheme}>
+        <DropdownMenuRadioGroup value={theme} onValueChange={handleThemeChange}>
           <DropdownMenuRadioItem value="light">
             <Sun size={ICON_SIZE} className="mr-2" />
             Light
