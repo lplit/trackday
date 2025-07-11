@@ -1,58 +1,62 @@
-import { Shield, Users, Calendar, Trophy, MapPin, Clock } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { Shield, Users, Calendar, Trophy, MapPin, Clock } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 
-export function TrackConnectFeatures() {
+/**
+ * Features section for landing page
+ * Server Component - no interactivity needed
+ */
+export default function LandingFeatures() {
   const features = [
     {
       icon: Shield,
-      title: "Exclusive Community",
-      description: "Private club atmosphere for serious trackday enthusiasts who value quality over quantity.",
+      title: 'Exclusive Community',
+      description: 'Private club atmosphere for serious trackday enthusiasts who value quality over quantity.',
     },
     {
       icon: Users,
-      title: "Box Sharing",
-      description: "Connect with like-minded riders to share premium paddock boxes and reduce costs.",
+      title: 'Box Sharing',
+      description: 'Connect with like-minded riders to share premium paddock boxes and reduce costs.',
     },
     {
       icon: Calendar,
-      title: "Event Discovery",
-      description: "Discover and coordinate attendance at the finest trackday events across Europe.",
+      title: 'Event Discovery',
+      description: 'Discover and coordinate attendance at the finest trackday events across Europe.',
     },
     {
       icon: Trophy,
-      title: "Premium Events",
-      description: "Access to exclusive trackdays at legendary circuits like Le Mans, Spa, and Nürburgring.",
+      title: 'Premium Events',
+      description: 'Access to exclusive trackdays at legendary circuits like Le Mans, Spa, and Nürburgring.',
     },
     {
       icon: MapPin,
-      title: "European Network",
-      description: "Comprehensive coverage of Europe's most prestigious racing circuits and organizers.",
+      title: 'European Network',
+      description: 'Comprehensive coverage of Europe\'s most prestigious racing circuits and organizers.',
     },
     {
       icon: Clock,
-      title: "Early Access",
-      description: "Be among the first to secure spots at high-demand trackday events before public release.",
+      title: 'Early Access',
+      description: 'Be among the first to secure spots at high-demand trackday events before public release.',
     },
   ];
 
   const testimonials = [
     {
-      name: "Alexandre M.",
-      location: "Le Mans Regular",
-      quote: "Finally, a platform built for serious trackday enthusiasts. Can't wait for the full launch.",
-      avatar: "AM",
+      name: 'Alexandre M.',
+      location: 'Le Mans Regular',
+      quote: 'Finally, a platform built for serious trackday enthusiasts. Can\'t wait for the full launch.',
+      avatar: 'AM',
     },
     {
-      name: "Sophia K.",
-      location: "Spa-Francorchamps",
-      quote: "The box-sharing feature will revolutionize how we approach trackdays. Brilliant concept.",
-      avatar: "SK",
+      name: 'Sophia K.',
+      location: 'Spa-Francorchamps',
+      quote: 'The box-sharing feature will revolutionize how we approach trackdays. Brilliant concept.',
+      avatar: 'SK',
     },
     {
-      name: "Marco R.",
-      location: "Mugello Circuit",
-      quote: "Built by people who actually understand trackday culture. This is what we've been waiting for.",
-      avatar: "MR",
+      name: 'Marco R.',
+      location: 'Mugello Circuit',
+      quote: 'Built by people who actually understand trackday culture. This is what we\'ve been waiting for.',
+      avatar: 'MR',
     },
   ];
 
@@ -65,7 +69,7 @@ export function TrackConnectFeatures() {
             Platform Features
           </Badge>
           <h2 className="text-3xl lg:text-4xl font-serif font-bold mb-6">
-            Built for the Modern{" "}
+            Built for the Modern{' '}
             <span className="racing-text-gradient">Trackday Experience</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">

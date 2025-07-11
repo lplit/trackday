@@ -1,12 +1,16 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import { useTheme } from "next-themes";
-import { Sun, Moon, Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { useState, useEffect } from 'react';
+import { useTheme } from 'next-themes';
+import { Sun, Moon, Menu, X } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
-export function TrackConnectNav() {
+/**
+ * Navigation component for landing page
+ * Client Component for theme toggle and mobile menu interactions
+ */
+export default function LandingNav() {
   const [mounted, setMounted] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { theme, setTheme } = useTheme();
@@ -61,10 +65,10 @@ export function TrackConnectNav() {
         <Button
           variant="ghost"
           size="sm"
-          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
           className="w-8 h-8 p-0"
         >
-          {theme === "dark" ? (
+          {theme === 'dark' ? (
             <Sun className="h-4 w-4 transition-transform duration-300 rotate-0 scale-100" />
           ) : (
             <Moon className="h-4 w-4 transition-transform duration-300 rotate-0 scale-100" />
@@ -78,10 +82,10 @@ export function TrackConnectNav() {
         <Button
           variant="ghost"
           size="sm"
-          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
           className="w-8 h-8 p-0"
         >
-          {theme === "dark" ? (
+          {theme === 'dark' ? (
             <Sun className="h-4 w-4" />
           ) : (
             <Moon className="h-4 w-4" />

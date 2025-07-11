@@ -1,14 +1,18 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
-import { ChevronRight, Mail, Star, Trophy, Zap } from "lucide-react";
+import { useState, useEffect } from 'react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Badge } from '@/components/ui/badge';
+import { ChevronRight, Mail, Star, Trophy, Zap } from 'lucide-react';
 
-export function TrackConnectHero() {
-  const [email, setEmail] = useState("");
-  const [firstName, setFirstName] = useState("");
+/**
+ * Hero section for landing page
+ * Following modern React patterns with proper state management
+ */
+export default function LandingHero() {
+  const [email, setEmail] = useState('');
+  const [firstName, setFirstName] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -51,7 +55,7 @@ export function TrackConnectHero() {
         <div className="absolute top-0 right-1/3 translate-x-2 w-1 h-full bg-gradient-to-b from-transparent via-secondary/10 to-transparent" />
       </div>
 
-      {/* Split-screen layout as specified */}
+      {/* Split-screen layout */}
       <div className="relative z-40 min-h-screen flex items-center">
         <div className="w-full max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-[60%,40%] gap-12 items-center">
@@ -64,7 +68,7 @@ export function TrackConnectHero() {
                 Launching Spring 2025 • Limited Beta Access
               </Badge>
 
-              {/* Primary headline stack as specified */}
+              {/* Primary headline stack */}
               <div className="space-y-6">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold leading-tight tracking-tight">
                   The Private Club for{" "}
@@ -77,7 +81,7 @@ export function TrackConnectHero() {
                 </h2>
               </div>
 
-              {/* Value proposition copy as specified */}
+              {/* Value proposition copy */}
               <div className="space-y-4 text-lg lg:text-xl leading-relaxed text-muted-foreground max-w-2xl">
                 <p className="text-foreground/80">
                   Join Europe&apos;s most exclusive trackday community. Share boxes, discover premium events, 
@@ -99,47 +103,42 @@ export function TrackConnectHero() {
                     </p>
                     
                     <form onSubmit={handleSubmit} className="space-y-4">
-                      {/* Optional first name field */}
-                      <div className="relative">
+                      <div>
                         <Input
                           type="text"
-                          placeholder="First Name (optional)"
+                          placeholder="First name"
                           value={firstName}
                           onChange={(e) => setFirstName(e.target.value)}
-                          className="h-14 text-base border-2 focus:border-primary/50 transition-colors"
+                          required
+                          className="bg-background/50 border-border/30"
                         />
                       </div>
-                      
-                      {/* Email field with floating label design */}
-                      <div className="relative">
-                        <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                      <div>
                         <Input
                           type="email"
-                          placeholder="your@email.com"
+                          placeholder="Your email address"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
                           required
-                          className="pl-10 h-14 text-base border-2 focus:border-primary/50 transition-colors"
+                          className="bg-background/50 border-border/30"
                         />
                       </div>
-                      
-                      {/* Primary CTA button with gradient */}
                       <Button 
                         type="submit" 
-                        size="lg"
-                        className="w-full h-14 text-lg font-semibold racing-gradient hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-lg"
                         disabled={isSubmitting}
+                        className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium"
                       >
                         {isSubmitting ? (
-                          <div className="flex items-center">
-                            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
-                            Joining the Elite...
-                          </div>
+                          <>
+                            <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
+                            Securing Access...
+                          </>
                         ) : (
-                          <div className="flex items-center">
-                            Join the Elite
-                            <ChevronRight className="w-5 h-5 ml-2" />
-                          </div>
+                          <>
+                            <Mail className="w-4 h-4 mr-2" />
+                            Secure Beta Access
+                            <ChevronRight className="w-4 h-4 ml-2" />
+                          </>
                         )}
                       </Button>
                     </form>
@@ -154,9 +153,12 @@ export function TrackConnectHero() {
                       <Trophy className="w-8 h-8 text-primary" />
                     </div>
                     <h3 className="text-xl font-semibold mb-2">Welcome to the Elite!</h3>
-                    <p className="text-sm text-muted-foreground">
-                      You&apos;ll be the first to know when we launch in Spring 2025.
+                    <p className="text-muted-foreground text-sm">
+                      Your beta access is confirmed. We&apos;ll email you exclusive updates about our Spring 2025 launch.
                     </p>
+                    <div className="mt-4 text-xs text-muted-foreground">
+                      Beta member #{Math.floor(Math.random() * 500) + 500}
+                    </div>
                   </div>
                 )}
               </div>
@@ -180,28 +182,26 @@ export function TrackConnectHero() {
                 <div className="aspect-[4/5] bg-gradient-to-br from-primary/10 via-secondary/5 to-primary/5 rounded-2xl border border-border/20 overflow-hidden">
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center space-y-4">
-                      <div className="w-24 h-24 bg-primary/20 rounded-full flex items-center justify-center mx-auto">
-                        <Zap className="w-12 h-12 text-primary" />
+                      <div className="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto">
+                        <Zap className="w-10 h-10 text-primary" />
                       </div>
-                      <p className="text-sm text-muted-foreground px-8">
-                        Premium trackday imagery will be placed here
-                      </p>
+                      <div className="text-muted-foreground text-sm">
+                        Platform Preview
+                      </div>
                     </div>
                   </div>
                   
-                  {/* Floating statistics overlay */}
+                  {/* Floating stat cards */}
                   <div className="absolute top-6 right-6 floating-stats rounded-lg p-4 max-w-[140px]">
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-primary">500+</div>
-                      <div className="text-xs text-muted-foreground">Pre-Registered</div>
-                    </div>
+                    <div className="text-xs text-muted-foreground mb-1">Early Members</div>
+                    <div className="text-2xl font-bold text-primary">500+</div>
+                    <div className="text-xs text-muted-foreground">Beta registered</div>
                   </div>
                   
                   <div className="absolute bottom-6 left-6 floating-stats rounded-lg p-4 max-w-[140px]">
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-primary">12</div>
-                      <div className="text-xs text-muted-foreground">Partner Tracks</div>
-                    </div>
+                    <div className="text-xs text-muted-foreground mb-1">Partner Tracks</div>
+                    <div className="text-2xl font-bold text-primary">12</div>
+                    <div className="text-xs text-muted-foreground">Confirmed venues</div>
                   </div>
                 </div>
 

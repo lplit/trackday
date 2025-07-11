@@ -1,10 +1,12 @@
-import { Calendar, MapPin, Mail } from "lucide-react";
+import { Calendar, MapPin, Mail, Home, Map } from "lucide-react";
+import { ThemeSwitcher } from "@/components/shared";
+import Link from "next/link";
 
-export function TrackConnectFooter() {
+export function GlobalFooter() {
   return (
     <footer className="relative z-40 border-t border-border bg-background/95 backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand Section */}
           <div className="space-y-4">
             <h3 className="text-xl font-serif font-bold racing-text-gradient">
@@ -17,6 +19,34 @@ export function TrackConnectFooter() {
             <div className="text-xs text-muted-foreground">
               40+ trackdays between founders
             </div>
+          </div>
+
+          {/* Navigation Links */}
+          <div className="space-y-4">
+            <h4 className="font-semibold text-foreground">Explore</h4>
+            <nav className="space-y-3 text-sm">
+              <Link 
+                href="/" 
+                className="flex items-center text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <Home className="w-4 h-4 mr-2" />
+                <span>Home</span>
+              </Link>
+              <Link 
+                href="/tracks" 
+                className="flex items-center text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <Map className="w-4 h-4 mr-2" />
+                <span>European Tracks</span>
+              </Link>
+              <Link 
+                href="/auth/sign-up" 
+                className="flex items-center text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <Calendar className="w-4 h-4 mr-2" />
+                <span>Join Community</span>
+              </Link>
+            </nav>
           </div>
 
           {/* Launch Info */}
@@ -38,15 +68,24 @@ export function TrackConnectFooter() {
             </div>
           </div>
 
-          {/* Trust Signals */}
+          {/* Trust Signals & Theme */}
           <div className="space-y-4">
-            <h4 className="font-semibold text-foreground">Early Access</h4>
+            <h4 className="font-semibold text-foreground">Community</h4>
             <div className="space-y-2 text-sm text-muted-foreground">
               <div>500+ Pre-registered members</div>
               <div>12 Partner tracks confirmed</div>
               <div>Premium features included</div>
             </div>
-            <div className="text-xs text-muted-foreground pt-2 border-t border-border">
+            
+            {/* Theme Switcher */}
+            <div className="pt-4 border-t border-border">
+              <div className="flex items-center justify-between">
+                <span className="text-sm font-medium text-foreground">Theme</span>
+                <ThemeSwitcher />
+              </div>
+            </div>
+            
+            <div className="text-xs text-muted-foreground pt-2">
               Built for the 2025 trackday season
             </div>
           </div>

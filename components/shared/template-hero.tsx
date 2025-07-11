@@ -1,7 +1,11 @@
-import { NextLogo } from "./next-logo";
-import { SupabaseLogo } from "./supabase-logo";
+import { NextLogo } from "../next-logo";
+import { SupabaseLogo } from "../supabase-logo";
 
-export function Hero() {
+/**
+ * Template hero component - Server Component
+ * Default hero for Supabase + Next.js template
+ */
+export default function TemplateHero() {
   return (
     <div className="flex flex-col gap-16 items-center">
       <div className="flex gap-8 justify-center items-center">
@@ -38,7 +42,6 @@ export function Hero() {
           Next.js
         </a>
       </p>
-      <div className="w-full p-[1px] bg-gradient-to-r from-transparent via-foreground/10 to-transparent my-8" />
     </div>
   );
 }

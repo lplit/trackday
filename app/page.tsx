@@ -1,7 +1,5 @@
-import { TrackConnectHero } from "@/components/trackconnect-hero";
-import { TrackConnectNav } from "@/components/trackconnect-nav";
-import { TrackConnectFeatures } from "@/components/trackconnect-features";
-import { TrackConnectFooter } from "@/components/trackconnect-footer";
+import { LandingHero, LandingNav, LandingFeatures } from "@/components/landing";
+import { GlobalFooter } from "@/components/global-footer";
 
 export default function Home() {
   return (
@@ -13,21 +11,21 @@ export default function Home() {
             TrackConnect
           </h1>
         </div>
-        <TrackConnectNav />
+        <LandingNav />
       </header>
 
       {/* Full Viewport Hero Section */}
       <section className="min-h-screen relative">
-        <TrackConnectHero />
+        <LandingHero />
       </section>
 
       {/* Features Section */}
       <section className="relative z-10">
-        <TrackConnectFeatures />
+        <LandingFeatures />
       </section>
 
       {/* Footer */}
-      <TrackConnectFooter />
+      <GlobalFooter />
     </main>
   );
 }
