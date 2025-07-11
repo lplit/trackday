@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { Sun, Moon, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export function TrackConnectNav() {
   const [mounted, setMounted] = useState(false);
@@ -22,6 +23,12 @@ export function TrackConnectNav() {
     <>
       {/* Desktop Navigation */}
       <nav className="hidden md:flex items-center space-x-8 text-sm font-medium">
+        <Link 
+          href="/tracks" 
+          className="hover:text-primary transition-colors duration-200"
+        >
+          Tracks
+        </Link>
         <a 
           href="#about" 
           className="hover:text-primary transition-colors duration-200"
@@ -95,6 +102,13 @@ export function TrackConnectNav() {
       {isMenuOpen && (
         <div className="fixed inset-0 z-50 bg-background/95 backdrop-blur-sm md:hidden">
           <div className="flex flex-col items-center justify-center h-full space-y-8">
+            <Link 
+              href="/tracks"
+              className="text-xl hover:text-primary transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Tracks
+            </Link>
             <a 
               href="#about"
               className="text-xl hover:text-primary transition-colors"
