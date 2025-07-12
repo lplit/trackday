@@ -31,6 +31,18 @@
     --chart-4: 45 96% 48%; /* Racing yellow */
     --chart-5: 280 100% 55%; /* Racing purple */
     --radius: 0.75rem; /* 12px for premium feel */
+    
+    /* Animation and transition durations */
+    --duration-fast: 150ms;
+    --duration-normal: 300ms;
+    --duration-slow: 500ms;
+    
+    /* Common spacing values */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
   }
   .dark {
     /* Dark Theme - Racing Inspired Colors */
@@ -161,6 +173,23 @@
   /* Performance optimizations */
   .will-change-transform {
     will-change: transform;
+  }
+
+  /* Common component patterns - Reusable classes */
+  .glass-card {
+    @apply bg-background/50 backdrop-blur-sm border border-border/30 rounded-lg;
+  }
+  
+  .glass-card-xl {
+    @apply bg-background/50 backdrop-blur-sm border border-border/20 rounded-xl;
+  }
+  
+  .stats-card {
+    @apply bg-background/50 rounded-lg p-3 border border-border/30;
+  }
+  
+  .feature-card {
+    @apply bg-background/50 backdrop-blur-sm border border-border rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:border-primary/20;
   }
 
   /* Premium glassmorphism effect */
