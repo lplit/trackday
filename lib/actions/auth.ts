@@ -4,7 +4,13 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 
-export async function signIn(prevState: any, formData: FormData) {
+interface AuthState {
+  error?: string;
+  success: boolean;
+  message?: string;
+}
+
+export async function signIn(prevState: AuthState | null, formData: FormData): Promise<AuthState> {
   const supabase = await createClient();
   
   const email = formData.get('email') as string;
@@ -32,7 +38,7 @@ export async function signIn(prevState: any, formData: FormData) {
 
     revalidatePath('/');
     redirect('/protected');
-  } catch (error) {
+  } catch (error: unknown) {
     return {
       error: error instanceof Error ? error.message : 'An error occurred',
       success: false
@@ -40,7 +46,7 @@ export async function signIn(prevState: any, formData: FormData) {
   }
 }
 
-export async function signUp(prevState: any, formData: FormData) {
+export async function signUp(prevState: AuthState | null, formData: FormData): Promise<AuthState> {
   const supabase = await createClient();
   
   const email = formData.get('email') as string;
@@ -85,7 +91,7 @@ export async function signUp(prevState: any, formData: FormData) {
     }
 
     redirect('/auth/sign-up-success');
-  } catch (error) {
+  } catch (error: unknown) {
     return {
       error: error instanceof Error ? error.message : 'An error occurred',
       success: false
@@ -93,7 +99,7 @@ export async function signUp(prevState: any, formData: FormData) {
   }
 }
 
-export async function resetPassword(prevState: any, formData: FormData) {
+export async function resetPassword(prevState: AuthState | null, formData: FormData): Promise<AuthState> {
   const supabase = await createClient();
   
   const email = formData.get('email') as string;
@@ -121,7 +127,7 @@ export async function resetPassword(prevState: any, formData: FormData) {
       success: true,
       message: 'Password reset link sent to your email'
     };
-  } catch (error) {
+  } catch (error: unknown) {
     return {
       error: error instanceof Error ? error.message : 'An error occurred',
       success: false
@@ -129,7 +135,7 @@ export async function resetPassword(prevState: any, formData: FormData) {
   }
 }
 
-export async function updatePassword(prevState: any, formData: FormData) {
+export async function updatePassword(prevState: AuthState | null, formData: FormData): Promise<AuthState> {
   const supabase = await createClient();
   
   const password = formData.get('password') as string;
@@ -170,7 +176,7 @@ export async function updatePassword(prevState: any, formData: FormData) {
 
     revalidatePath('/');
     redirect('/protected');
-  } catch (error) {
+  } catch (error: unknown) {
     return {
       error: error instanceof Error ? error.message : 'An error occurred',
       success: false
@@ -185,7 +191,7 @@ export async function signOut() {
     await supabase.auth.signOut();
     revalidatePath('/');
     redirect('/auth/login');
-  } catch (error) {
+  } catch {
     // Handle error silently or redirect to error page
     redirect('/auth/login');
   }

@@ -2,7 +2,13 @@
 
 import { revalidatePath } from 'next/cache';
 
-export async function subscribeToNewsletter(prevState: any, formData: FormData) {
+interface NewsletterState {
+  error?: string;
+  success: boolean;
+  message?: string;
+}
+
+export async function subscribeToNewsletter(prevState: NewsletterState | null, formData: FormData): Promise<NewsletterState> {
   const email = formData.get('email') as string;
   const firstName = formData.get('firstName') as string;
   
@@ -31,7 +37,7 @@ export async function subscribeToNewsletter(prevState: any, formData: FormData) 
       success: true,
       message: 'Successfully subscribed! Check your email for exclusive updates and early access.'
     };
-  } catch (error) {
+  } catch (error: unknown) {
     return {
       error: error instanceof Error ? error.message : 'An error occurred',
       success: false
