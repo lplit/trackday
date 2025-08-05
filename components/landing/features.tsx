@@ -13,19 +13,9 @@ export default function LandingFeatures() {
       description: 'Private club atmosphere for serious trackday enthusiasts who value quality over quantity.',
     },
     {
-      icon: Users,
-      title: 'Box Sharing',
-      description: 'Connect with like-minded riders to share premium paddock boxes and reduce costs.',
-    },
-    {
       icon: Calendar,
       title: 'Event Discovery',
       description: 'Discover and coordinate attendance at the finest trackday events across Europe.',
-    },
-    {
-      icon: Trophy,
-      title: 'Premium Events',
-      description: 'Access to exclusive trackdays at legendary circuits like Le Mans, Spa, and Nürburgring.',
     },
     {
       icon: MapPin,
@@ -33,9 +23,9 @@ export default function LandingFeatures() {
       description: 'Comprehensive coverage of Europe\'s most prestigious racing circuits and organizers.',
     },
     {
-      icon: Clock,
-      title: 'Early Access',
-      description: 'Be among the first to secure spots at high-demand trackday events before public release.',
+      icon: Users,
+      title: 'Partner Network',
+      description: 'Hand picked partnerships with premium providers and trusted third-parties.',
     },
   ];
 

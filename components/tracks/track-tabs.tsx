@@ -50,7 +50,7 @@ export default function TrackTabs({ track }: TrackTabsProps) {
   return (
     <div className="container mx-auto px-4 py-12">
       {/* Tab Navigation */}
-      <div className="flex flex-wrap gap-2 mb-8 p-1 bg-muted/30 rounded-lg border border-border/30">
+      <div className="flex flex-wrap justify-evenly gap-2 mb-8 p-1 bg-muted/30 rounded-lg border border-border/30">
         {tabs.map((tab) => {
           const Icon = tab.icon;
           return (

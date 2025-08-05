@@ -1,3 +1,5 @@
+'use server';
+
 import { tracks } from './data';
 import { Track, TrackOverview } from './types';
 import { notFound } from 'next/navigation';
@@ -15,7 +17,7 @@ export async function getTracks(): Promise<TrackOverview[]> {
   // Simulate async data fetching delay
   // In production, this would be a database query or API call
   await new Promise(resolve => setTimeout(resolve, 0));
-  
+
   return tracks.map(track => ({
     slug: track.slug,
     name: track.name,
@@ -23,7 +25,16 @@ export async function getTracks(): Promise<TrackOverview[]> {
     country: track.country,
     length: track.length,
     difficulty: track.difficulty,
-    safetyRating: track.safetyRating
+    safetyRating: track.safetyRating,
+    countryCode: track.countryCode,
+    highestMotorcycleCategory: track.highestMotorcycleCategory,
+    highestCarCategory: track.highestCarCategory,
+    leftTurns: track.leftTurns,
+    rightTurns: track.rightTurns,
+    motorcycleRecordLapTime: track.motorcycleRecordLapTime,
+    motorcycleRecordLapDriver: track.motorcycleRecordLapDriver,
+    carRecordLapTime: track.carRecordLapTime,
+    carRecordLapDriver: track.carRecordLapDriver
   }));
 }
 
@@ -36,7 +47,7 @@ export async function getTrack(slug: string): Promise<Track | null> {
   // Simulate async data fetching delay
   // In production, this would be a database query or API call
   await new Promise(resolve => setTimeout(resolve, 0));
-  
+
   const track = tracks.find(t => t.slug === slug);
   return track || null;
 }
@@ -47,11 +58,11 @@ export async function getTrack(slug: string): Promise<Track | null> {
  */
 export async function getTrackOrNotFound(slug: string): Promise<Track> {
   const track = await getTrack(slug);
-  
+
   if (!track) {
     notFound();
   }
-  
+
   return track;
 }
 
@@ -61,7 +72,7 @@ export async function getTrackOrNotFound(slug: string): Promise<Track> {
  */
 export async function getTracksByDifficulty(difficulty: Track['difficulty']): Promise<TrackOverview[]> {
   await new Promise(resolve => setTimeout(resolve, 0));
-  
+
   return tracks
     .filter(track => track.difficulty === difficulty)
     .map(track => ({
@@ -81,7 +92,7 @@ export async function getTracksByDifficulty(difficulty: Track['difficulty']): Pr
  */
 export async function getTracksByCountry(country: string): Promise<TrackOverview[]> {
   await new Promise(resolve => setTimeout(resolve, 0));
-  
+
   return tracks
     .filter(track => track.country.toLowerCase() === country.toLowerCase())
     .map(track => ({
@@ -101,11 +112,11 @@ export async function getTracksByCountry(country: string): Promise<TrackOverview
  */
 export async function searchTracks(query: string): Promise<TrackOverview[]> {
   await new Promise(resolve => setTimeout(resolve, 0));
-  
+
   const searchTerm = query.toLowerCase();
-  
+
   return tracks
-    .filter(track => 
+    .filter(track =>
       track.name.toLowerCase().includes(searchTerm) ||
       track.location.toLowerCase().includes(searchTerm) ||
       track.country.toLowerCase().includes(searchTerm)
@@ -127,18 +138,18 @@ export async function searchTracks(query: string): Promise<TrackOverview[]> {
  */
 export async function getTrackStats() {
   await new Promise(resolve => setTimeout(resolve, 0));
-  
+
   const countries = [...new Set(tracks.map(track => track.country))];
   const difficulties = tracks.reduce((acc, track) => {
     acc[track.difficulty] = (acc[track.difficulty] || 0) + 1;
     return acc;
   }, {} as Record<string, number>);
-  
+
   const averageLength = tracks.reduce((sum, track) => {
     const length = parseFloat(track.length.replace(' km', ''));
     return sum + length;
   }, 0) / tracks.length;
-  
+
   return {
     totalTracks: tracks.length,
     countries: countries.length,

@@ -37,6 +37,8 @@ export interface Track {
   country: string;
   length: string;
   turns: number;
+  leftTurns?: number;
+  rightTurns?: number;
   description: string;
   difficulty: TrackDifficulty;
   type: TrackType;
@@ -46,6 +48,12 @@ export interface Track {
   facilities?: string[];
   trackdays?: TrackEvent[];
   keyCorners?: TrackCorner[];
+  /** ISO 3166-1 alpha-2 country code for flag rendering */
+  countryCode?: string;
+  /** Highest-level motorcycle racing category (e.g. MotoGP, WSBK, None) */
+  highestMotorcycleCategory?: string;
+  /** Highest-level car racing category (e.g. F1, WEC, None) */
+  highestCarCategory?: string;
   history?: string;
   safetyRating?: number;
   yearBuilt?: number;
@@ -53,6 +61,10 @@ export interface Track {
   image?: string;
   website?: string;
   coordinates?: TrackCoordinates;
+  motorcycleRecordLapTime?: string;
+  motorcycleRecordLapDriver?: string;
+  carRecordLapTime?: string;
+  carRecordLapDriver?: string;
 }
 
 /**
@@ -67,6 +79,15 @@ export interface TrackOverview {
   length: string;
   difficulty: TrackDifficulty;
   safetyRating?: number;
+  countryCode?: string;
+  highestMotorcycleCategory?: string;
+  highestCarCategory?: string;
+  motorcycleRecordLapTime?: string;
+  motorcycleRecordLapDriver?: string;
+  carRecordLapTime?: string;
+  carRecordLapDriver?: string;
+  leftTurns?: number;
+  rightTurns?: number;
 }
 
 export interface TrackCardProps {
